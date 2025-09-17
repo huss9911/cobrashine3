@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CobraShine - Premium Cobra Wax | Profesjonell Bilpleie</title>
+    <meta name="description" content="Premium Cobra Wax - Norges mest eksklusive bilpleieprodukter. Ekstrem glans og langvarig beskyttelse.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gold: #FFD700;
+            --dark-gold: #FFA500;
+            --orange-accent: #FF8C00;
+            --bg-black: #0a0a0a;
+            --bg-dark: #1a1a1a;
+            --bg-card: #242424;
+            --text-light: #ffffff;
+            --text-gray: #b0b0b0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-black);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated gradient background */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5)) 
+                        drop-shadow(0 0 60px rgba(255, 165, 0, 0.3)); 
+            }
+            50% { 
+                filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.7)) 
+                        drop-shadow(0 0 80px rgba(255, 165, 0, 0.5)); 
+            }
+        }
+
+        @keyframes rainbowShift {
+            0% { filter: hue-rotate(0deg) drop-shadow(0 0 30px rgba(255, 215, 0, 0.5)); }
+            100% { filter: hue-rotate(360deg) drop-shadow(0 0 30px rgba(255, 215, 0, 0.5)); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 20px 50px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        nav.scrolled {
+            padding: 15px 50px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.8);
+            background: rgba(10, 10, 10, 0.98);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-nav {
+            height: 45px;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.3));
+        }
+
+        .logo-nav:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 20px rgba(255, 165, 0, 0.5));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--orange-accent));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .cart-button {
+            background: transparent;
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .cart-button:hover {
+            background: linear-gradient(135deg, var(--primary-gold), var(--orange-accent));
+            color: var(--bg-black);
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Hero Section with animated gradient */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #0d0d0d, #141414);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            overflow: hidden;
+        }
+
+        /* Animated color orbs behind logo */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 50%;
+            right: 10%;
+            transform: translateY(-50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 140, 0, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 60%;
+            right: 25%;
+            transform: translateY(-50%);
+            animation: pulse 4s ease-in-out infinite 2s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translateY(-50%) scale(1); opacity: 0.5; }
+            50% { transform: translateY(-50%) scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-content {
+            animation: slideIn 1s ease;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(90deg, var(--primary-gold), var(--orange-accent), var(--primary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradientShift 3s linear infinite;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.4s;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.6s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-gold), var(--orange-accent));
+            color: var(--bg-black);
+            padding: 15px 35px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            padding: 15px 35px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-gold);
+            color: var(--primary-gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-logo {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            animation: logoGlow 3s ease-in-out infinite;
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Rainbow effect on hover */
+        .hero-logo:hover {
+            animation: rainbowShift 3s linear infinite;
+        }
+
+        /* Floating particles around logo */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            opacity: 0;
+            animation: floatParticle 10s infinite;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 1s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 2s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 3s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 4s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 6s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 7s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 8s; }
+
+        /* Trust badges */
+        .trust-badges {
+            padding: 40px 50px;
+            background: linear-gradient(90deg, var(--bg-dark), #0f0f0f, var(--bg-dark));
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .badges-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .badge:hover {
+            transform: translateY(-5px);
+        }
+
+        .badge-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 140, 0, 0.1));
+            border-radius: 50%;
+            color: var(--primary-gold);
+            font-weight: bold;
+            font-size: 18px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .badge-text {
+            font-size: 14px;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 100px 50px;
+            background: var(--bg-black);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            background: linear-gradient(90deg, var(--text-light), var(--primary-gold), var(--text-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradientShift 5s linear infinite;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            border: 1px solid transparent;
+            background-clip: padding-box;
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 12px;
+            padding: 1px;
+            background: linear-gradient(135deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: exclude;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px) rotateX(-2deg);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.15),
+                       0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-image-container {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-gray);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .product-placeholder svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            opacity: 0.3;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--orange-accent));
+            color: var(--bg-black);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-category {
+            color: var(--primary-gold);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .product-description {
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .product-price {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-light);
+        }
+
+        .product-price small {
+            font-size: 14px;
+            color: var(--text-gray);
+            font-weight: 400;
+        }
+
+        .add-to-cart {
+            background: transparent;
+            color: var(--primary-gold);
+            border: 2px solid var(--primary-gold);
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .add-to-cart:hover {
+            background: linear-gradient(135deg, var(--primary-gold), var(--orange-accent));
+            color: var(--bg-black);
+            border-color: transparent;
+        }
+
+        /* Info Section */
+        .info-section {
+            padding: 100px 50px;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-black) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-section::before {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+            border-radius: 50%;
+            top: -400px;
+            right: -400px;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .info-grid {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .info-card:hover::after {
+            opacity: 1;
+        }
+
+        .info-card:hover {
+            background: rgba(255, 215, 0, 0.05);
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(255, 215, 0, 0.2);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.1);
+        }
+
+        .info-card:hover .info-icon {
+            transform: rotateY(360deg);
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--bg-black);
+            transition: transform 0.6s ease;
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .info-description {
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 50px;
+            background: var(--bg-dark);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+            animation: gradientShift 3s linear infinite;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-black);
+            padding: 60px 50px 30px;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            width: 180px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.2));
+        }
+
+        .footer-brand p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-gray);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--primary-gold), var(--orange-accent));
+            color: var(--bg-black);
+            border-color: transparent;
+            transform: translateY(-3px);
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 15px;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 215, 0, 0.05);
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links, .cart-button {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .badges-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            nav {
+                padding: 15px 20px;
+            }
+
+            .hero, .products, .info-section {
+                padding: 60px 20px;
+            }
+
+            .hero-logo {
+                max-width: 300px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <img src="cobrashine-logo.png" alt="CobraShine" class="logo-nav">
+            <ul class="nav-links">
+                <li><a href="#home">Hjem</a></li>
+                <li><a href="#products">Produkter</a></li>
+                <li><a href="#about">Om Oss</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+            <div class="nav-cta">
+                <button class="cart-button">Handlekurv (0)</button>
+                <button class="mobile-menu-btn">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Premium Cobra Wax<br>
+                    som gir <span class="highlight">ekstrem glans</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Opplev forskjellen med Norges mest avanserte bilpleieprodukter.
+                    Utviklet for entusiaster, testet av profesjonelle.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn-primary">Se produkter</a>
+                    <a href="#" class="btn-secondary">Last ned katalog</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="cobrashine-logo.png" alt="CobraShine" class="hero-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="trust-badges">
+        <div class="badges-container">
+            <div class="badge">
+                <div class="badge-icon">✓</div>
+                <span class="badge-text">Fri frakt over 500kr</span>
+            </div>
+            <div class="badge">
+                <div class="badge-icon">↻</div>
+                <span class="badge-text">30 dagers åpent kjøp</span>
+            </div>
+            <div class="badge">
+                <div class="badge-icon">★</div>
+                <span class="badge-text">4.9 av 5 stjerner</span>
+            </div>
+            <div class="badge">
+                <div class="badge-icon">⚡</div>
+                <span class="badge-text">Levering 1-3 dager</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="section-header">
+            <h2 class="section-title">Våre bestselgere</h2>
+            <p class="section-subtitle">Premium produkter for det perfekte resultatet</p>
+        </div>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image-container">
+                    <span class="product-badge">Bestselger</span>
+                    <div class="product-placeholder">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        </svg>
+                        Produktbilde
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Premium Wax</div>
+                    <h3 class="product-name">Cobra Wax Extreme</h3>
+                    <p class="product-description">Carnauba-voks med nano-teknologi for ekstrem glans og holdbarhet.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            899,-
+                            <small>/ 200ml</small>
+                        </div>
+                        <button class="add-to-cart">Kjøp</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-container">
+                    <div class="product-placeholder">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        </svg>
+                        Produktbilde
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Coating</div>
+                    <h3 class="product-name">Ceramic Shield Pro</h3>
+                    <p class="product-description">9H keramisk coating med opptil 5 års holdbarhet. Ekstrem hydrofob effekt.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            1899,-
+                            <small>/ 50ml</small>
+                        </div>
+                        <button class="add-to-cart">Kjøp</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-container">
+                    <span class="product-badge">Nyhet</span>
+                    <div class="product-placeholder">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        </svg>
+                        Produktbilde
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Quick Detailer</div>
+                    <h3 class="product-name">Instant Shine Spray</h3>
+                    <p class="product-description">Hurtigspray for øyeblikkelig glans. Fjerner fingeravtrykk og lett støv.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            249,-
+                            <small>/ 750ml</small>
+                        </div>
+                        <button class="add-to-cart">Kjøp</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-container">
+                    <div class="product-placeholder">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        </svg>
+                        Produktbilde
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Shampoo</div>
+                    <h3 class="product-name">Premium Foam Wash</h3>
+                    <p class="product-description">pH-nøytral skumshampoo med høy rengjøringsevne. Skånsom mot voks.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            299,-
+                            <small>/ 1L</small>
+                        </div>
+                        <button class="add-to-cart">Kjøp</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-container">
+                    <div class="product-placeholder">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        </svg>
+                        Produktbilde
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Interiør</div>
+                    <h3 class="product-name">Leather Care Premium</h3>
+                    <p class="product-description">Renser og beskytter skinn. UV-beskyttelse og anti-age formel.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            349,-
+                            <small>/ 250ml</small>
+                        </div>
+                        <button class="add-to-cart">Kjøp</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-container">
+                    <span class="product-badge">Spar 20%</span>
+                    <div class="product-placeholder">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        </svg>
+                        Produktbilde
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Startpakke</div>
+                    <h3 class="product-name">Complete Detail Kit</h3>
+                    <p class="product-description">Alt du trenger for profesjonell bilpleie. 8 produkter + tilbehør.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            1999,-
+                            <small><del>2499,-</del></small>
+                        </div>
+                        <button class="add-to-cart">Kjøp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section" id="about">
+        <div class="section-header">
+            <h2 class="section-title">Hvorfor velge CobraShine?</h2>
+            <p class="section-subtitle">Vi leverer kvalitet du kan stole på</p>
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">01</div>
+                <h3 class="info-title">Utviklet i Norge</h3>
+                <p class="info-description">
+                    Alle våre produkter er utviklet og testet under norske forhold. 
+                    Vi vet hva som fungerer best mot salt, snø og vårt tøffe klima.
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">02</div>
+                <h3 class="info-title">Profesjonell kvalitet</h3>
+                <p class="info-description">
+                    Brukt av over 200 profesjonelle bilpleiefirmaer i Norge. 
+                    Samme kvalitet som brukes på luksusbiler og utstillingsbiler.
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">03</div>
+                <h3 class="info-title">Garantert resultat</h3>
+                <p class="info-description">
+                    Vi står 100% bak våre produkter. Ikke fornøyd? 
+                    Vi refunderer pengene dine uten spørsmål innen 30 dager.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">Bli medlem i Cobra Club</h2>
+            <p class="cta-text">
+                Få eksklusive tilbud, profesjonelle tips og 
+                15% rabatt på ditt første kjøp.
+            </p>
+            <button class="btn-primary">Registrer deg gratis</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="cobrashine-logo.png" alt="CobraShine" class="footer-logo">
+                <p>
+                    Premium Cobra Wax - Norges ledende leverandør av profesjonelle 
+                    bilpleieprodukter siden 2015.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">i</a>
+                    <a href="#" class="social-link">y</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Produkter</h4>
+                <ul>
+                    <li><a href="#">Eksteriør</a></li>
+                    <li><a href="#">Interiør</a></li>
+                    <li><a href="#">Coating & Voks</a></li>
+                    <li><a href="#">Tilbehør</a></li>
+                    <li><a href="#">Pakkeløsninger</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Kundeservice</h4>
+                <ul>
+                    <li><a href="#">Kontakt oss</a></li>
+                    <li><a href="#">Frakt og levering</a></li>
+                    <li><a href="#">Retur og bytte</a></li>
+                    <li><a href="#">Garanti</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Om CobraShine</h4>
+                <ul>
+                    <li><a href="#">Vår historie</a></li>
+                    <li><a href="#">Forhandlere</a></li>
+                    <li><a href="#">Bli forhandler</a></li>
+                    <li><a href="#">Jobb hos oss</a></li>
+                    <li><a href="#">Presse</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2024 CobraShine AS | Org.nr: 123 456 789 | Alle rettigheter reservert</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling with offset for fixed navbar
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight - 20;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Cart functionality with celebration effect
+        let cartCount = 0;
+        const cartButton = document.querySelector('.cart-button');
+        
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                cartCount++;
+                cartButton.textContent = `Handlekurv (${cartCount})`;
+                
+                // Pulse effect on cart button
+                cartButton.style.animation = 'pulse 0.5s ease';
+                setTimeout(() => {
+                    cartButton.style.animation = '';
+                }, 500);
+                
+                // Visual feedback
+                const originalText = this.textContent;
+                this.textContent = '✓ Lagt til!';
+                this.style.background = 'linear-gradient(135deg, var(--primary-gold), var(--orange-accent))';
+                this.style.color = 'var(--bg-black)';
+                
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.background = '';
+                    this.style.color = '';
+                }, 1500);
+            });
+        });
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero');
+            parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            
+            // Fade hero content on scroll
+            const heroContent = document.querySelector('.hero-content');
+            const heroLogo = document.querySelector('.hero-logo');
+            const opacity = 1 - (scrolled / 800);
+            if (opacity > 0) {
+                heroContent.style.opacity = opacity;
+                heroLogo.style.opacity = opacity;
+                heroLogo.style.transform = `scale(${1 + scrolled * 0.0005})`;
+            }
+        });
+
+        // Intersection Observer for animations with stagger effect
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '0';
+                        entry.target.style.transform = 'translateY(30px)';
+                        
+                        setTimeout(() => {
+                            entry.target.style.transition = 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, 100);
+                    }, index * 100); // Stagger animation
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.product-card, .info-card, .badge').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mouse follow effect on hero section
+        const hero = document.querySelector('.hero');
+        hero.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            const heroLogo = document.querySelector('.hero-logo');
+            if (heroLogo) {
+                heroLogo.style.transform = `translateX(${(x - 0.5) * 20}px) translateY(${(y - 0.5) * 20}px)`;
+            }
+        });
+
+        // Add number counting animation
+        const animateValue = (element, start, end, duration) => {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                element.textContent = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        };
+
+        // Trigger counter animation when badges come into view
+        const badgeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.target.classList.contains('badge')) {
+                    const text = entry.target.querySelector('.badge-text');
+                    if (text && text.textContent.includes('4.9')) {
+                        // Animate rating
+                        const span = document.createElement('span');
+                        span.textContent = '0.0';
+                        text.innerHTML = '<span class="rating-counter">0.0</span> av 5 stjerner';
+                        setTimeout(() => {
+                            animateValue(text.querySelector('.rating-counter'), 0, 49, 1500);
+                            setTimeout(() => {
+                                text.querySelector('.rating-counter').textContent = '4.9';
+                            }, 1500);
+                        }, 300);
+                        badgeObserver.unobserve(entry.target);
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('.badge').forEach(badge => {
+            badgeObserver.observe(badge);
+        });
+    </script>
+</body>
+</html>
